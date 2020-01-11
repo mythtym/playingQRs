@@ -15,6 +15,7 @@
 		A918E27623C9CA5A00DDE4BD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A918E27423C9CA5A00DDE4BD /* LaunchScreen.storyboard */; };
 		A918E28123C9CA5A00DDE4BD /* payingQRTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A918E28023C9CA5A00DDE4BD /* payingQRTests.swift */; };
 		A918E28C23C9CA5A00DDE4BD /* payingQRUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A918E28B23C9CA5A00DDE4BD /* payingQRUITests.swift */; };
+		A918E29A23C9CB5700DDE4BD /* QRManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A918E29923C9CB5700DDE4BD /* QRManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		A918E28723C9CA5A00DDE4BD /* payingQRUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = payingQRUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A918E28B23C9CA5A00DDE4BD /* payingQRUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = payingQRUITests.swift; sourceTree = "<group>"; };
 		A918E28D23C9CA5A00DDE4BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A918E29923C9CB5700DDE4BD /* QRManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				A918E27423C9CA5A00DDE4BD /* LaunchScreen.storyboard */,
 				A918E27723C9CA5A00DDE4BD /* Info.plist */,
 				A918E26F23C9CA5800DDE4BD /* payingQR.xcdatamodeld */,
+				A918E29923C9CB5700DDE4BD /* QRManager.swift */,
 			);
 			path = payingQR;
 			sourceTree = "<group>";
@@ -259,6 +262,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A918E29A23C9CB5700DDE4BD /* QRManager.swift in Sources */,
 				A918E26B23C9CA5800DDE4BD /* ViewController.swift in Sources */,
 				A918E27123C9CA5800DDE4BD /* payingQR.xcdatamodeld in Sources */,
 				A918E26923C9CA5800DDE4BD /* AppDelegate.swift in Sources */,
@@ -439,6 +443,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LV59CAP7ZX;
 				INFOPLIST_FILE = payingQR/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -457,6 +462,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LV59CAP7ZX;
 				INFOPLIST_FILE = payingQR/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
