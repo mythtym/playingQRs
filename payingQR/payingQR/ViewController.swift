@@ -8,7 +8,15 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, QRManagerProtocol {
+  func successRead(data: String!) {
+    print("data : ",data)
+  }
+  
+  func errorRead(description: String!) {
+    print("error :",description)
+  }
+  
 
   @IBOutlet weak var generatedQR: UIImageView!
   override func viewDidLoad() {
@@ -23,6 +31,7 @@ class ViewController: UIViewController {
   @IBAction func readQR(_ sender: Any) {
     print("rearQR")
     let qrmanager = QRManager()
+    qrmanager.delegate = self
     self.present(qrmanager, animated: true, completion: nil)
   }
   

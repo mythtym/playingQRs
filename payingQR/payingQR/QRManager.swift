@@ -29,7 +29,8 @@ class QRManager: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
   override func viewDidLoad() {
     super.viewDidLoad()
     self.setPreview()
-
+    
+    self.view.backgroundColor = .blue
     self.previewBackground.backgroundColor = UIColor.white
     captureSession = AVCaptureSession()
     
@@ -42,13 +43,19 @@ class QRManager: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
       return
     }
     
+    if (captureSession.canAddInput(videoInput)) {
+      captureSession.addInput(videoInput)
+      
+    } else {
+      failed()
+      return
+    }
+    
     if (captureSession.canAddOutput(metadataOutput)) {
       captureSession.addOutput(metadataOutput)
       
       metadataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
       metadataOutput.metadataObjectTypes = [AVMetadataObject.ObjectType.qr]
-      
-      captureSession.addOutput(photoOutput)
       
     } else {
       failed()
@@ -56,7 +63,7 @@ class QRManager: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     }
 
     previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-    previewLayer.frame = CGRect(x: 2, y: 2, width: self.previewQR.layer.frame.size.width - 4, height: self.previewQR.layer.frame.size.height - 4 )
+    previewLayer.frame = CGRect(x: 2, y: 2, width: 190 - 4, height: 190 - 4 )
     previewLayer.videoGravity = .resizeAspectFill
     self.previewQR.layer.addSublayer(previewLayer)
    
@@ -92,12 +99,17 @@ class QRManager: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
   func found(code: String) {
     print(code)
     self.delegate?.successRead(data: code)
+    self.dismiss(animated: true, completion: nil)
   }
   
   
-  
-  
   func setPreview() {
+    self.previewQR.translatesAutoresizingMaskIntoConstraints = false
+    self.previewBackground.addSubview(self.previewQR)
+    self.previewBackground.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-5-[vistaP]-5-|", options: [], metrics: nil, views: ["vistaP":previewQR]))
+    self.previewBackground.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-5-[vistaP]-5-|", options: [], metrics: nil, views: ["vistaP":previewQR]))
+    
+    
     self.previewBackground.translatesAutoresizingMaskIntoConstraints = false
     self.view.addSubview(self.previewBackground)
     self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:[vistaB(200)]", options: [], metrics: nil, views: ["vistaB":previewBackground]))
@@ -105,10 +117,6 @@ class QRManager: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     self.view.addConstraint(NSLayoutConstraint.init(item: self.previewBackground, attribute: .centerX, relatedBy: .equal, toItem: self.view, attribute: .centerX, multiplier: 1, constant: 0))
     self.view.addConstraint(NSLayoutConstraint.init(item: self.previewBackground, attribute: .centerY, relatedBy: .equal, toItem: self.view, attribute: .centerY, multiplier: 1, constant: 0))
     
-    self.previewQR.translatesAutoresizingMaskIntoConstraints = false
-    self.previewBackground.addSubview(self.previewQR)
-    self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-5-[vistaP]-5-|", options: [], metrics: nil, views: ["vistaP":previewQR]))
-    self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-5-[vistaP]-5-|", options: [], metrics: nil, views: ["vistaP":previewQR]))
     
     
   }
