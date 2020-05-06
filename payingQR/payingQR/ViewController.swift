@@ -10,11 +10,11 @@ import UIKit
 
 class ViewController: UIViewController, QRManagerProtocol {
   func successRead(data: String!) {
-    print("data : ",data)
+    print("data : ",data as Any)
   }
   
   func errorRead(description: String!) {
-    print("error :",description)
+    print("error :",description as Any)
   }
   
 
